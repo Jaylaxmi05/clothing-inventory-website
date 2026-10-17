@@ -8,12 +8,14 @@
   Do not collect a user's Google account password. Google sign-in uses Google's secure popup.
 */
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_FIREBASE_API_KEY",
-  authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  appId: "PASTE_YOUR_FIREBASE_APP_ID"
+  apiKey: "AIzaSyCbuVZaV7-EjvIfmr_cziq93r7MXPw-xEM",
+  authDomain: "threadstock-cb7ee.firebaseapp.com",
+  projectId: "threadstock-cb7ee",
+  storageBucket: "threadstock-cb7ee.firebasestorage.app",
+  messagingSenderId: "1028788600759",
+  appId: "1:1028788600759:web:768e8ee6f28b5ada1a7232",
+  measurementId: "G-PDV7234CK1"
 };
-
 const loginTab = document.getElementById("loginTab");
 const signupTab = document.getElementById("signupTab");
 const authForm = document.getElementById("authForm");
@@ -58,19 +60,9 @@ loginTab.addEventListener("click", () => setMode("login"));
 signupTab.addEventListener("click", () => setMode("signup"));
 switchLink.addEventListener("click", () => setMode(mode === "login" ? "signup" : "login"));
 
-try {
-  const placeholdersPresent = Object.values(firebaseConfig).some(v => String(v).startsWith("PASTE_"));
-  if (!placeholdersPresent && window.firebase) {
-    firebase.initializeApp(firebaseConfig);
-    auth = firebase.auth();
-    configured = true;
-    auth.onAuthStateChanged(user => {
-      if (user) showNotice(`Signed in as ${user.email || "Google user"}. Authentication is working.`, "success");
-    });
-  }
-} catch (e) {
-  console.error(e);
-}
+
+
+
 
 authForm.addEventListener("submit", async event => {
   event.preventDefault();
